@@ -6,29 +6,21 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class HomeController : Controller
+    public class INDEXController : Controller
     {
+        // GET: INDEX
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult MemberProfile()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-
-        public ActionResult TEST()
+        [HttpPost]
+        public ActionResult MemberMemberProfile()
         {
             return View();
         }
