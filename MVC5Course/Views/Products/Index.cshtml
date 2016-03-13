@@ -35,7 +35,13 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == item.ProductId)
+        {
+            ViewBag.SelectedProductItem = item;
+        }
+        <tr @if (ViewBag.SelectedProductId != null && ViewBag.SelectedProductId == item.ProductId) {
+                @Html.Raw("style='background-color: lightyellow;'")
+            }>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -51,9 +57,24 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }) |
+                @Html.ActionLink("OrderLine", "Index", new { type = "OrderLines", ProductId = item.ProductId })
             </td>
         </tr>
     }
-
 </table>
+<hr />
+@if (ViewBag.SelectedProductId != null)
+{
+    if (ViewBag.type == "Details")
+    {
+        @Html.Partial("Details", ViewData["SelectedProductItem"])
+    }
+    else
+    {
+        @Html.Action("Index", "OrderLines", new { ProductId = ViewBag.SelectedProductId })
+    }
+}
+
+
+

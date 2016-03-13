@@ -17,9 +17,14 @@ namespace MVC5Course.Controllers
         //ProductRepository repo = RepositoryHelper.GetProductRepository();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int? ProductId, string type)
         {
-            var data=repo.All();
+            var data=repo.All().Take(10);
+            ViewBag.type = type;
+            if (ProductId.HasValue)
+            {
+                ViewBag.SelectedProductId = ProductId.Value;
+            }
             return View(data);
             //return View(db.Product.ToList());
         }
@@ -152,5 +157,6 @@ namespace MVC5Course.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

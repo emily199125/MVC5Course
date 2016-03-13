@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<MVC5Course.Models.OrderLine>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "";
 }
 
-<h2>Index</h2>
+<h2>訂單明細</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,7 +23,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Product.ProductName)
         </th>
-        <th></th>
+
     </tr>
 
 @foreach (var item in Model) {
@@ -40,11 +40,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Product.ProductName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+
     </tr>
 }
 
