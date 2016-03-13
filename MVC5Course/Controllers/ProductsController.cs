@@ -86,7 +86,20 @@ namespace MVC5Course.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit(int id, FormContext form)//後面變數無用只是比免和上面那個相同
+        {//model binding 告訴他一個型別  要去改內容從Product
+            Product product = repo.Find(id);
+            if (TryUpdateModel<Product>(product,new string[] { "ProductId","ProductName","Price","Active","Stock"}))//要修改的欄位
+            {
+                repo.UnitOfWork.Commit();
+                TempData["updateSucess"] = "商品修改成功!";
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+
+
+        /*public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +111,7 @@ namespace MVC5Course.Controllers
                 return RedirectToAction("Index");
             }
             return View(product);
-        }
+        }*/
 
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)

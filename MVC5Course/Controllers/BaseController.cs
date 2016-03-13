@@ -9,6 +9,7 @@ namespace MVC5Course.Controllers
 {
     public abstract class BaseController : Controller//abstract 抽象化
     {
+        //[Authorize]  //權限控制
         protected override void HandleUnknownAction(string actionName)
         {
 

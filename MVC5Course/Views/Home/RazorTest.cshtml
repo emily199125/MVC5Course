@@ -1,0 +1,43 @@
+﻿@model Int32[]
+
+@foreach (var i in Model)
+{
+    @i;
+}
+
+
+@foreach (var i in Model)
+{
+    @i@(" ");
+//<text>@i </text>}
+    //@(i+" ")
+}
+
+<ul>
+@foreach (var i in Model)
+{
+    <li>@i</li>
+}
+</ul>
+
+
+
+
+
+
+
+
+
+@*@{
+        var i = true;
+        if (i)
+        {
+            <p>HI</p>
+
+            <text>
+                   @DateTime.Now.ToString();
+            </text>
+        }
+    }*@
+
+

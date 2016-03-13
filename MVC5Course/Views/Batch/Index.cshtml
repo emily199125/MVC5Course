@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MVC5Course.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    @*
+                   data[0].ProductId
+                    data[0].ProductName
+                    data[1].ProductId
+                    data[1].ProductName
+     *@
+    <table class="table">
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.Stock)</th>
+        </tr>
+
+        @{
+            var data = Model.ToArray();
+        }
+        @for (var i = 0; i < data.Length; i++)
+        {
+            @Html.HiddenFor(modelItem => data[i].ProductId)
+            <tr>
+                <td>@Html.DisplayFor(modelItem => data[i].ProductName)</td>
+                <td>@Html.EditorFor(modelItem => data[i].Price)<br/><font color="#FF0000">@Html.ValidationMessageFor(modelItem => data[i].Price)</font></td>
+                <td>@Html.EditorFor(modelItem => data[i].Stock)<br/>@Html.ValidationMessageFor(modelItem => data[i].Stock)</td>
+
+            </tr>
+        }
+
+    </table>
+    <button class="btn btn-primary">批次更新</button>
+ }

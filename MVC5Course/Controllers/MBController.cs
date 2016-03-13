@@ -18,7 +18,7 @@ namespace MVC5Course.Controllers
         [HttpPost]
         public ActionResult Index(MemberViewModel data)
         {
-            return View();//沒改道
+            return Content(data.Name + " " + data.Birthday);
         }
 
 

@@ -57,6 +57,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -184,12 +188,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BatchController.cs" />
     <Compile Include="Controllers\EFController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\INDEXController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MBController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\共用的ViewBag資料共享於部分HomeController動作方法Attribute.cs" />
+    <Compile Include="Controllers\紀錄Action的執行時間Attribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,6 +284,7 @@
     <Compile Include="Models\ProductRepository.cs">
       <DependentUpon>IRepository.EF6.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product批次更新.cs" />
     <Compile Include="Models\RepositoryHelper.cs">
       <DependentUpon>IRepository.EF6.tt</DependentUpon>
     </Compile>
@@ -390,12 +399,15 @@
     <Content Include="Views\EF\QueryPlan.cshtml" />
     <Content Include="Views\AR\Index.cshtml" />
     <Content Include="Views\MB\Index.cshtml" />
+    <Content Include="Views\Batch\Index.cshtml" />
+    <Content Include="Views\Member\Login.cshtml" />
+    <Content Include="Views\Home\ErrorTest.cshtml" />
+    <Content Include="Views\Home\RazorTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Member\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
